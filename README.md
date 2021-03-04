@@ -41,7 +41,7 @@ data/images/image-name-2.jpg
     4. SSH into the instance. [More info](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
     5. clone this repo
     ```
-    git clone https://github.com/deividasskiparis/aws-darknet-docker.git aws-darknet-docker && cd aws-darknet-docker
+    git clone https://github.com/octavmatu/aws-darknet-docker.git aws-darknet-docker && cd aws-darknet-docker
     ```
 
 5. Build docker image
