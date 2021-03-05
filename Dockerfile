@@ -1,9 +1,12 @@
-FROM nvidia/cuda:10.0-devel-ubuntu18.04
+FROM nvidia/cuda:10.1-devel-ubuntu18.04
 
-WORKDIR /opt/docker
+CMD ["sudo rm /usr/local/cuda && sudo ln -s /usr/local/cuda-10.1 /usr/local/cuda"]
+
+CMD ["mkdir ~/training"]
+WORKDIR ~/training
 
 RUN apt-get update && \
-		apt-get install -y \
+	apt-get install -y \
         python3 \
         python3-pip \
         python3-setuptools \
@@ -11,17 +14,16 @@ RUN apt-get update && \
 
 RUN pip3 install setuptools wheel virtualenv awscli --upgrade
 
-RUN git clone https://github.com/pjreddie/darknet.git darknet && \
+RUN git clone https://github.com/AlexeyAB/darknet.git && \
 	cd darknet && \
 	make GPU=1 all
 
-WORKDIR /opt/docker
+WORKDIR ~/training
 
-COPY config/* ./
 COPY scripts/* ./
 
-ENV NETWORK_FILENAME network.cfg
-ENV DATA_FILENAME config.data
+ENV NETWORK_FILENAME ""
+ENV DATA_FILENAME ""
 ENV PRETRAINED_WEIGHTS_FILENAME ""
 ENV S3_BUCKET_NAME ""
 
