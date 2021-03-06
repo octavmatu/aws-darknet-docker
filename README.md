@@ -1,5 +1,5 @@
 # aws-darknet-docker
-Nvidia based docker image with [Darknet](https://github.com/pjreddie/darknet) to train a neural net, such as [yolov3-tiny](https://pjreddie.com/darknet/yolo/) on your custom images
+Nvidia based docker image with [Darknet](https://github.com/alexeyab/darknet) to train a neural net, such as [yolov3-tiny](https://pjreddie.com/darknet/yolo/) on your custom images
 
 Works seemlesly with AWS EC2 and S3
 
@@ -9,9 +9,13 @@ Works seemlesly with AWS EC2 and S3
 Expected structure of the bucket
 ```
 your-s3-bucket/
-└── pretrained/
-    └── your-pretrained-weights-filename.conv.15
+├── pretrained/
+|   └── your-pretrained-weights-filename.conv.15
+├── models/
+|   └── ...
 └── data/
+    ├── obj.data
+    ├── obj.names
     ├── train.txt
     ├── test.txt
     ├── images/
@@ -53,6 +57,8 @@ docker build -t aws-darknet-docker .
 docker run -d --runtime=nvidia --name=aws-darknet-docker \
     -e PRETRAINED_WEIGHTS_FILE="your-pretrained-weights-filename.conv.15" \
     -e S3_BUCKET_NAME="your-s3-bucket-name" \
+    -e NETWORK_FILENAME="your-network-file-name.cfg" \
+    -e DATA_FILENAME="your-data-file-name.data" \
     aws-darknet-docker
 
 ```
@@ -61,15 +67,19 @@ NOTE: If running locally instead on EC2, you will have to provide AWS credential
 docker run -d --name=aws-darknet-docker \
     -e PRETRAINED_WEIGHTS_FILE="your-pretrained-weights-filename.conv.15" \
     -e S3_BUCKET_NAME="your-s3-bucket-name" \
+    -e NETWORK_FILENAME="your-network-file-name.cfg" \
+    -e DATA_FILENAME="your-data-file-name.data" \
     -e "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" \
     -e "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" \
     -e "AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN" \
     aws-darknet-docker
 
 ```
-Check anytime how your container is doing by getting logs from it
+Check anytime how your container is doing by getting logs from it, or follow continuosly
 ```
 docker logs aws-darknet-docker
+
+docker logs --follow aws-darknet-docker 
 ```
 
 7. After the training is finished, the trained weights will be uploaded to you S3 bucket `/models` directory
