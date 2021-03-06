@@ -82,6 +82,6 @@ docker logs aws-darknet-docker
 docker logs --follow aws-darknet-docker 
 ```
 
-7. After the training is finished, the trained weights will be uploaded to you S3 bucket `/models` directory
+7. After the training is finished, the trained weights will be uploaded to you S3 bucket `/trained` directory
 
 8. Terminate your EC2 after the training is finished to avoid charges
