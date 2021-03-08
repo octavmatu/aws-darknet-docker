@@ -11,4 +11,4 @@ echo "Uploading final weights, ${BASE_NAME}_${UNIX_EPOCH}.weights, and config fi
 
 aws s3 cp ${NETWORK} ${OUTPUT_PATH}/${NETWORK}
 aws s3 cp backup/${BASE_NAME}_final.weights ${OUTPUT_PATH}/${BASE_NAME}_${UNIX_EPOCH}_final.weights
-aws s3 cp backup ${OUTPUT_PATH}
+aws s3 cp backup ${OUTPUT_PATH}/backup
