@@ -4,7 +4,7 @@ WORKDIR /opt/docker
 
 ARG OPENCV_VERSION=4.3.0
 
-RUN sudo rm /usr/local/cuda && sudo ln -s /usr/local/cuda-10.1 /usr/local/cuda
+RUN rm /usr/local/cuda && ln -s /usr/local/cuda-10.1 /usr/local/cuda
 
 RUN apt-get update && apt-get upgrade -y &&\
     # Install build tools, build dependencies and python
