@@ -9,6 +9,8 @@ Works seemlesly with AWS EC2 and S3
 Expected structure of the bucket
 ```
 your-s3-bucket/
+├── cfg/
+|   └── yolo-config-adapted-for-your-data.cfg
 ├── pretrained/
 |   └── your-pretrained-weights-filename.conv.15
 ├── models/
