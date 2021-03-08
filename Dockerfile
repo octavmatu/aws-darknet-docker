@@ -79,6 +79,10 @@ RUN cd /opt/ &&\
 
 WORKDIR /opt/docker
 
+RUN git clone https://github.com/AlexeyAB/darknet.git && \
+	cd darknet && \
+	make GPU=1 OPENCV=1 all
+	
 COPY scripts/* ./
 
 ENV NETWORK_FILENAME ""
