@@ -24,7 +24,7 @@ if [ -f "data/${DATA_FILENAME}" ]; then
 fi
 
 echo "Start training at $(date +"%D %T")"
-./darknet/darknet detector train ${OCTAV_DATA} ${OCTAV_NETWORK} ${OCTAV_PRETRAINED_WEIGHTS} -dont_show -mjpeg_port 8090 -mjson_port 9070 -map 
+./darknet/darknet detector train ${OCTAV_DATA} ${OCTAV_NETWORK} ${OCTAV_PRETRAINED_WEIGHTS} -dont_show -mjpeg_port 8090 -map 
 
 echo "Finished training at $(date +"%D %T")"
 
