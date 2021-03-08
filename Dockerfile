@@ -68,7 +68,7 @@ RUN cd /opt/ &&\
         -DCMAKE_INSTALL_PREFIX=/usr/local \
         .. &&\
     # Make
-    make -j"$(nproc)" && \
+    make -j7 && \
     # Install to /usr/local/lib
     make install && \
     ldconfig &&\
