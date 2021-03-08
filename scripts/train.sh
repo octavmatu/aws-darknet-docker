@@ -1,8 +1,5 @@
 #!/bin/bash
-set -e
-
-echo "Clearing workspace"
-rm -rf ./*
+set -e 
 
 echo "Getting data from S3"
 
