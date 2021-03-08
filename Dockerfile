@@ -1,9 +1,6 @@
 FROM nvidia/cuda:10.1-devel-ubuntu18.04
 
-CMD ["sudo rm /usr/local/cuda && sudo ln -s /usr/local/cuda-10.1 /usr/local/cuda"]
-
-CMD ["mkdir ~/training"]
-WORKDIR ~/training
+WORKDIR /opt/docker
 
 RUN apt-get update && \
 	apt-get install -y \
@@ -18,7 +15,7 @@ RUN git clone https://github.com/AlexeyAB/darknet.git && \
 	cd darknet && \
 	make GPU=1 all
 
-WORKDIR ~/training
+WORKDIR /opt/docker
 
 COPY scripts/* ./
 
