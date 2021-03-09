@@ -3,6 +3,7 @@ FROM nvidia/cuda:10.1-devel-ubuntu18.04
 WORKDIR /opt/docker
 
 RUN DEBIAN_FRONTEND=noninteractive \
+	TZ=Europe/Frankfurt \
 	apt-get update && \
 	apt-get install -y \
 	python3 \
