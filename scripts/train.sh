@@ -8,7 +8,13 @@ if [ ! -d "backup" ]; then
 fi
   
 aws s3 sync s3://${S3_BUCKET_NAME}/cfg cfg/
-aws s3 sync s3://${S3_BUCKET_NAME}/data data/ 
+aws s3 sync s3://${S3_BUCKET_NAME}/data/images data/images 
+#aws s3 sync s3://${S3_BUCKET_NAME}/data/labels data/images 
+aws s3 sync s3://${S3_BUCKET_NAME}/data/labels data/labels 
+aws s3 sync s3://${S3_BUCKET_NAME}/data/obj.data data/obj.data 
+aws s3 sync s3://${S3_BUCKET_NAME}/data/obj.names data/obj.names
+aws s3 sync s3://${S3_BUCKET_NAME}/data/test.txt data/train.txt 
+aws s3 sync s3://${S3_BUCKET_NAME}/data/train.txt data/train.txt  
 aws s3 sync s3://${S3_BUCKET_NAME}/pretrained pretrained/
 
 if [ -f "cfg/${NETWORK_FILENAME}" ]; then
