@@ -2,17 +2,12 @@ FROM nvidia/cuda:10.1-devel-ubuntu18.04
 
 WORKDIR /opt/docker
 
-RUN DEBIAN_FRONTEND=noninteractive \
-	TZ=Europe/Frankfurt \
-	apt-get update && \
+RUN apt-get update && \
 	apt-get install -y \
 	python3 \
         python3-pip \
         python3-setuptools \
-        git-core \
-	build-essential \
-	libopencv-dev \
-	python3-opencv
+        git-core
 
 RUN pip3 install setuptools wheel virtualenv awscli --upgrade
 
@@ -20,7 +15,7 @@ WORKDIR /opt/docker
 
 RUN git clone https://github.com/AlexeyAB/darknet.git && \
 	cd darknet && \
-	make GPU=1 OPENCV=1 all
+	make GPU=1 all
 	
 COPY scripts/* ./
 
