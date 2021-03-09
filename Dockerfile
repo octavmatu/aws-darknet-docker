@@ -2,9 +2,6 @@ FROM nvidia/cuda:10.1-devel-ubuntu18.04
 
 WORKDIR /opt/docker
 
-ENV TZ=Europe/Frankfurt
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
 RUN DEBIAN_FRONTEND=noninteractive \
 	apt-get update && \
 	apt-get install -y \
