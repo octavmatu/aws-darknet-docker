@@ -2,8 +2,6 @@ FROM nvidia/cuda:10.1-devel-ubuntu18.04
 
 WORKDIR /opt/docker
 
-ARG OPENCV_VERSION=4.3.0
-
 RUN apt-get update && apt-get upgrade -y &&\
     apt-get install -y \
 		python3 \
