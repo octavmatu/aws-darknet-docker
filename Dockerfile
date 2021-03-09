@@ -19,6 +19,7 @@ RUN git clone https://github.com/pjreddie/darknet.git && \
 	
 COPY scripts/* ./
 
+ENV DOWNLOAD_DATA "0"
 ENV NETWORK_FILENAME ""
 ENV DATA_FILENAME ""
 ENV PRETRAINED_WEIGHTS_FILENAME ""
