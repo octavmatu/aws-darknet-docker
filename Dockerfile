@@ -13,7 +13,7 @@ RUN pip3 install setuptools wheel virtualenv awscli --upgrade
 
 WORKDIR /opt/docker
 
-RUN git clone https://github.com/pjredie/darknet.git && \
+RUN git clone https://github.com/pjreddie/darknet.git && \
 	cd darknet && \
 	make GPU=1 all
 	
