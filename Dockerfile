@@ -5,13 +5,16 @@ WORKDIR /opt/docker
 ENV TZ=Europe/Frankfurt
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get update && apt-get upgrade -y &&\
-    apt-get install -y \
-		python3 \
+RUN DEBIAN_FRONTEND=noninteractive \
+	apt-get update &&
+	apt-get install -y \
+	python3 \
         python3-pip \
         python3-setuptools \
         git-core \
-	libopencv-dev
+	build-essential \
+	libopencv-dev \
+	python3-opencv
 
 RUN pip3 install setuptools wheel virtualenv awscli --upgrade
 
